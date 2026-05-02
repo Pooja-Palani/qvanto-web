@@ -37,10 +37,7 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
               Every platform we deploy shares the same high-security, agentic DNA. This page documents the standard — consistent across BFSI, Digital Retail, and ESG operations.
             </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/10">
-            <img src="/images/architecture_stack.png" alt="Qvanto Architecture Stack Diagram" className="w-full h-auto" />
-          </motion.div>
+
         </div>
       </section>
 
