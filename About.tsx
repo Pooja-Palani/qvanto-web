@@ -17,7 +17,9 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
-export default function About() {
+interface AboutProps { setCurrentPage: (page: string) => void; }
+
+export default function About({ setCurrentPage }: AboutProps) {
   return (
     <div className="bg-brand-dark min-h-screen">
       {/* Hero Section */}
@@ -30,9 +32,9 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-8xl font-medium tracking-tight text-white mb-8 leading-[1.1]"
           >
-            We're Building the <br />
-            <span className="italic font-serif text-brand-blue">Governance Layer</span> <br />
-            the World's Data Needs
+            We engineer the intelligence<br />
+            <span className="italic font-serif text-brand-blue">and governance layers</span> <br />
+            the world's enterprises need.
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +42,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-xl text-white/60 max-w-3xl mx-auto font-medium leading-relaxed"
           >
-            Qvanto AI transforms innovative governance technology into real, measurable business impact.
+            Qvanto AI engineers agentic intelligence and governance infrastructure for data-critical enterprises across BFSI, Retail, and ESG.
           </motion.p>
         </div>
       </section>
@@ -215,9 +217,9 @@ export default function About() {
 
           <div className="grid md:grid-cols-3 gap-12 mx-auto">
             {[
-              { name: 'Pooja Palani', role: 'Founder', creds: 'B.Tech ECE | BS Data Science' },
-              { name: 'Subashini Palani', role: 'Founder', creds: 'B.Sc B.Ed | Diploma in Computer Applications' },
-              { name: 'Pradeep Ravichandran', role: 'CTO', creds: 'Torro AI Founder' },
+              { name: 'Pooja Palani', role: 'Founder' },
+              { name: 'Subashini Palani', role: 'Co-Founder' },
+              { name: 'Pradeep Ravichandran', role: 'CTO' },
             ].map((founder, i) => (
               <motion.div 
                 key={i}
@@ -240,8 +242,7 @@ export default function About() {
                 >
                   {founder.name}
                 </motion.h4>
-                <div className="text-brand-blue text-[10px] font-bold uppercase tracking-widest mb-6">{founder.role}</div>
-                <p className="text-white/40 text-sm font-medium mb-8">{founder.creds}</p>
+                <div className="text-brand-blue text-[10px] font-bold uppercase tracking-widest mb-8">{founder.role}</div>
                 <motion.a 
                   whileHover={{ scale: 1.05, x: 5 }}
                   href="#" 
@@ -255,59 +256,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Incubation Section */}
-      <section className="py-32 bg-white text-brand-dark">
-        <div className="max-content">
-          <motion.div 
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass-card bg-brand-dark p-16 text-center relative overflow-hidden"
-          >
-            <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="inline-block px-4 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/60 mb-8"
-              >
-                ■ Support
-              </motion.div>
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-12"
-              >
-                Backed with the Right Support
-              </motion.h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  "Technical mentorship on scaling integrations",
-                  "Industry introductions in BFSI, Healthcare & Telecom",
-                  "Compliance and legal guidance for ESG and privacy",
-                  "Office space, software, and hardware facilities"
-                ].map((bullet, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.05 }}
-                    whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
-                    className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center transition-all"
-                  >
-                    <p className="text-sm text-white/60 font-medium">{bullet}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

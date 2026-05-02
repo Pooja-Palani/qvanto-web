@@ -71,8 +71,8 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-8xl font-medium tracking-tight text-white mb-8 leading-[1.1]"
           >
-            Let's Talk <br />
-            <span className="italic font-serif text-brand-blue">Governance</span>
+            Let's build something<br />
+            <span className="italic font-serif text-brand-blue">intelligent together.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-xl text-white/60 max-w-2xl mx-auto font-medium leading-relaxed"
           >
-            Have a question, want a demo, or need a custom enterprise solution? We'd love to hear from you.
+            Reach out to explore how Qvanto's agentic intelligence and governance architecture maps to your enterprise stack.
           </motion.p>
         </div>
       </section>
@@ -221,6 +221,8 @@ export default function Contact() {
                             <select name="industry" className="w-full bg-white/5 border border-white/10 rounded-lg px-6 py-4 text-white focus:outline-none focus:border-brand-blue/50 transition-colors appearance-none">
                               <option value="" className="bg-brand-dark">Select Industry</option>
                               <option value="BFSI" className="bg-brand-dark">BFSI</option>
+                              <option value="Digital Retail" className="bg-brand-dark">Digital Retail</option>
+                              <option value="ESG / Sustainability" className="bg-brand-dark">ESG / Sustainability</option>
                               <option value="Healthcare" className="bg-brand-dark">Healthcare</option>
                               <option value="Telecom" className="bg-brand-dark">Telecom</option>
                               <option value="Manufacturing" className="bg-brand-dark">Manufacturing</option>
@@ -280,52 +282,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-32 bg-gray-50 text-brand-dark">
-        <div className="max-content">
-          <div className="grid lg:grid-cols-2 gap-24">
-            <div>
-              <div className="inline-block px-4 py-1 rounded-md bg-gray-100 border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">
-                ■ FAQs
-              </div>
-              <h2 className="text-4xl md:text-7xl font-medium tracking-tight mb-12 leading-tight">
-                Frequently Asked <br />Questions.
-              </h2>
-            </div>
-            
-            <div className="space-y-4">
-              {faqs.map((faq, i) => (
-                <div key={i} className="border-b border-gray-200 last:border-0">
-                  <button 
-                    onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                    className="w-full py-6 flex items-center justify-between text-left group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <Plus className={`text-gray-300 transition-transform duration-300 ${activeFaq === i ? 'rotate-45' : ''}`} size={20} />
-                      <span className="text-sm font-bold uppercase tracking-widest text-gray-400">[ {i + 1} ]</span>
-                    </div>
-                    <span className="text-lg font-medium group-hover:text-brand-blue transition-colors">{faq.q}</span>
-                  </button>
-                  <AnimatePresence>
-                    {activeFaq === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="pb-8 pl-10 text-gray-500 leading-relaxed font-medium">
-                          {faq.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
+
