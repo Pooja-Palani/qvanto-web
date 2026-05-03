@@ -115,8 +115,8 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-4">Consistent Across Every Vertical Suite</h2>
             <p className="text-gray-400 max-w-xl mx-auto font-medium">The same data governance, security, and ESG compliance standard applies across BFSI, Commerce, and ESG deployments — without exception.</p>
           </div>
-          <div className="max-w-4xl mx-auto overflow-hidden rounded-3xl border border-gray-100 shadow-xl">
-            <table className="w-full text-left border-collapse">
+          <div className="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-gray-100 shadow-xl">
+            <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="p-5 text-xs font-bold uppercase tracking-widest text-gray-400">Governance Dimension</th>

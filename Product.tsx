@@ -147,8 +147,8 @@ export default function Product({ setCurrentPage }: ProductProps) {
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-6">Why Enterprises Choose Qvanto Over the Rest</h2>
           </div>
 
-          <div className="max-w-4xl mx-auto overflow-hidden rounded-3xl border border-gray-100 shadow-xl">
-            <table className="w-full text-left border-collapse">
+          <div className="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-gray-100 shadow-xl">
+            <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="p-6 text-xs font-bold uppercase tracking-widest text-gray-400">Feature</th>
