@@ -242,13 +242,6 @@ export default function About({ setCurrentPage }: AboutProps) {
                   {founder.name}
                 </motion.h4>
                 <div className="text-brand-blue text-[10px] font-bold uppercase tracking-widest mb-8">{founder.role}</div>
-                <motion.a 
-                  whileHover={{ scale: 1.05, x: 5 }}
-                  href="#" 
-                  className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest"
-                >
-                  <Linkedin size={14} /> LinkedIn
-                </motion.a>
               </motion.div>
             ))}
           </div>
