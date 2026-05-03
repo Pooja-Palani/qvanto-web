@@ -82,11 +82,10 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-brand-dark/85 backdrop-blur-xl py-3 border-b border-white/8'
           : 'bg-transparent py-5'
-      }`}
+        }`}
     >
       <div className="max-content flex items-center justify-between">
         {/* Logo */}
@@ -94,19 +93,10 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <motion.div
-            whileHover={{ scale: 1.12, rotate: 5 }}
-            className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-lg"
-          >
-            <span className="text-brand-blue font-black -rotate-12">Q</span>
-          </motion.div>
-          <div className="flex flex-col leading-none">
-            <span className="text-[15px] font-black tracking-tight text-white uppercase">Qvanto AI</span>
-            <span className="text-[8px] font-bold tracking-[0.18em] text-white/30 uppercase">Ecosystem</span>
-          </div>
+          <img src="/Logo.png" alt="Company Logo" className="h-16 md:h-20 w-auto object-contain transform scale-[2.2] origin-left -ml-4" />
         </motion.div>
 
         {/* Desktop Nav */}
@@ -130,11 +120,10 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
               transition={{ duration: 0.4, delay: 0.05 }}
               onClick={() => setCapabilitiesOpen(!capabilitiesOpen)}
               onMouseEnter={() => setCapabilitiesOpen(true)}
-              className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${
-                currentPage === 'capabilities'
+              className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${currentPage === 'capabilities'
                   ? 'text-white'
                   : 'text-white/55 hover:text-white'
-              }`}
+                }`}
             >
               Capabilities
               <motion.div animate={{ rotate: capabilitiesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -265,11 +254,10 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   onClick={() => navigate(link.id)}
-                  className={`text-left py-3 px-4 rounded-xl font-bold text-sm uppercase tracking-widest transition-all ${
-                    currentPage === link.id
+                  className={`text-left py-3 px-4 rounded-xl font-bold text-sm uppercase tracking-widest transition-all ${currentPage === link.id
                       ? 'text-white bg-white/5'
                       : 'text-white/50 hover:text-white hover:bg-white/3'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </motion.button>
@@ -307,9 +295,8 @@ function NavLink({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay }}
       onClick={onClick}
-      className={`relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${
-        active ? 'text-white' : 'text-white/55 hover:text-white'
-      }`}
+      className={`relative text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${active ? 'text-white' : 'text-white/55 hover:text-white'
+        }`}
     >
       {label}
       {active && (

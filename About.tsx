@@ -138,10 +138,9 @@ export default function About({ setCurrentPage }: AboutProps) {
               <h3 className="text-3xl font-bold mb-6">Mission</h3>
               <div className="space-y-4">
                 {[
-                  "Simplify governance by integrating seamlessly with existing enterprise systems.",
-                  "Accelerate decision-making by reducing data access delays from months to minutes.",
-                  "Embed privacy-by-design into every workflow, ensuring compliance with global and Indian regulations.",
-                  "Promote ESG efficiency by reducing data duplication and enabling sustainable cloud operations."
+                  "Deliver enterprise-level data governance and observability solutions.",
+                  "Provide cutting-edge digital retail solutions tailored for modern commerce.",
+                  "Empower organizations with a strong team backed by the latest technology and Agentic AI."
                 ].map((point, i) => (
                   <motion.div 
                     key={i}

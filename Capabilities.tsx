@@ -101,7 +101,7 @@ export default function Capabilities({ setCurrentPage }: CapabilitiesProps) {
       </section>
 
       {/* Suite Navigator */}
-      <section className="py-4 bg-brand-surface/50 border-y border-white/6 sticky top-[64px] z-40 backdrop-blur-xl">
+      <section className="py-4 bg-brand-surface/50 border-y border-white/6 backdrop-blur-xl">
         <div className="max-content">
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
             {suites.map(s => (
