@@ -27,22 +27,21 @@ export default function Contact() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
       });
 
       if (response.ok) {
         setFormStatus('sent');
       } else {
-        const errorPayload = await response.json().catch(() => null);
-        throw new Error(errorPayload?.details || errorPayload?.error || 'Failed to send');
+        throw new Error('Failed to send');
       }
     } catch (error) {
       console.error('Error:', error);
       setFormStatus('error');
-      setSubmitError(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+      setSubmitError('Failed to send message. Please try again.');
     }
   };
 
@@ -171,7 +170,8 @@ export default function Contact() {
                       className="flex-1 flex flex-col"
                     >
                       <h3 className="text-3xl font-bold mb-8">Send Us a Message</h3>
-                      <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
+                      <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
+                        <input type="hidden" name="form-name" value="contact" />
                         <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-2">
                             <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 ml-1">Full Name (required)</label>
