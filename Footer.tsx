@@ -20,7 +20,7 @@ export default function Footer({ setCurrentPage }: FooterProps) {
         { label: 'Intelligence Core', id: 'capabilities' },
         { label: 'BFSI Engine', id: 'capabilities' },
         { label: 'Commerce Engine', id: 'capabilities' },
-        { label: 'ESG Framework', id: 'capabilities' },
+        { label: 'Agentic platform delivery', id: 'capabilities' },
         { label: 'Governance Fabric', id: 'capabilities' },
       ],
     },

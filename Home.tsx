@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Cpu, Shield, Building2, ShoppingBag, Leaf, CheckCircle2, TrendingUp, AlertCircle, BarChart3, Globe, Clock, ChevronRight } from 'lucide-react';
+import { ArrowRight, Cpu, Shield, Building2, ShoppingBag, Layers, CheckCircle2, TrendingUp, AlertCircle, BarChart3, Clock, ChevronRight } from 'lucide-react';
 import GridDistortion from './GridDistortion';
 import VantaDots from './VantaDots';
 
@@ -90,7 +90,7 @@ function EcosystemMap({ setCurrentPage }: HomeProps) {
             <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-blue/70 mb-1">Intelligence Core</div>
             <div className="text-lg font-bold text-white mb-1.5">Agentic AI Framework</div>
             <div className="text-[12px] text-white/35 font-medium leading-relaxed">
-              Cross-industry autonomous agent orchestration — the reasoning engine powering every vertical suite with policy-gated intelligence.
+              Multi-agent orchestration and tool use under enterprise policy — how we design, integrate, and operate the technology platforms your teams run on.
             </div>
           </div>
           <div className="shrink-0 flex flex-col items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -103,9 +103,9 @@ function EcosystemMap({ setCurrentPage }: HomeProps) {
       {/* ─ Flow: Core → Engines ─ */}
       <div className="flex justify-center mb-4">
         <svg width="800" height="48" viewBox="0 0 800 48" className="w-full max-w-4xl opacity-25" preserveAspectRatio="xMidYMid meet">
-          {[[400, 0, 130, 48], [400, 0, 400, 48], [400, 0, 670, 48]].map(([x1, y1, x2, y2], i) => (
+          {[[400, 0, 200, 48], [400, 0, 600, 48]].map(([x1, y1, x2, y2], i) => (
             <motion.line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke={['#7c3aed', '#10b981', '#f59e0b'][i]} strokeWidth="1.5" strokeDasharray="6 4"
+              stroke={['#7c3aed', '#10b981'][i]} strokeWidth="1.5" strokeDasharray="6 4"
               initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
               transition={{ delay: 0.55 + i * 0.1, duration: 0.7 }} />
           ))}
@@ -113,16 +113,13 @@ function EcosystemMap({ setCurrentPage }: HomeProps) {
       </div>
 
       {/* ─ Vertical Suite Engines ─ */}
-      <div className="grid md:grid-cols-3 gap-5 mb-4">
+      <div className="grid md:grid-cols-2 gap-5 mb-4 max-w-4xl mx-auto">
         {[
           { icon: <Building2 size={22} />, label: 'BFSI Engine', sub: 'Compliance & RegTech', color: '#7c3aed', cls: 'engine-bfsi',
             desc: 'Autonomous compliance agents for SEBI, RBI, and Basel III — monitor, classify, and report regulatory signals without human latency.',
             page: 'capabilities' },
           { icon: <ShoppingBag size={22} />, label: 'Digital Retail Engine', sub: 'Platform Orchestration', color: '#10b981', cls: 'engine-commerce',
             desc: 'Intelligent orchestration across digital retail platforms — supply chain visibility, demand prediction, and personalisation at scale.',
-            page: 'capabilities' },
-          { icon: <Leaf size={22} />, label: 'ESG Framework', sub: 'Sustainability Intelligence', color: '#f59e0b', cls: 'engine-esg',
-            desc: 'Data-agent pipelines for BRSR, GRI, and TCFD reporting — transforming ESG compliance into a strategic intelligence asset.',
             page: 'capabilities' },
         ].map((eng, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -151,7 +148,7 @@ function EcosystemMap({ setCurrentPage }: HomeProps) {
       {/* ─ Flow: Engines → Governance ─ */}
       <div className="flex justify-center mb-4">
         <svg width="800" height="40" viewBox="0 0 800 40" className="w-full max-w-4xl opacity-25" preserveAspectRatio="xMidYMid meet">
-          {[[130, 0, 400, 40], [400, 0, 400, 40], [670, 0, 400, 40]].map(([x1, y1, x2, y2], i) => (
+          {[[200, 0, 400, 40], [600, 0, 400, 40]].map(([x1, y1, x2, y2], i) => (
             <motion.line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="6 4"
               initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
               transition={{ delay: 0.75 + i * 0.08, duration: 0.6 }} />
@@ -173,7 +170,7 @@ function EcosystemMap({ setCurrentPage }: HomeProps) {
             <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-cyan/60 mb-1">Foundation Layer</div>
             <div className="text-base font-bold text-white mb-1.5">Governance Fabric</div>
             <div className="text-[12px] text-white/35 font-medium leading-relaxed">
-              The cross-cutting control plane enforcing data integrity, access policy, audit continuity, and privacy automation across all engines.
+              The cross-cutting control plane for privacy, access, audit, and regulatory alignment — the same bar for compliance, security, and reporting standards on every deployment.
             </div>
           </div>
           <div className="shrink-0 flex flex-col items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -235,7 +232,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
 
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
             className="text-base text-white/45 mb-10 max-w-xl mx-auto font-medium leading-relaxed">
-            One Intelligence Core. Three Vertical Engines. One unified governance fabric — deployable in weeks.
+            Agentic AI methods to design and deliver governed technology platforms: one intelligence core, domain engines where you need them, and one governance fabric — deployable in weeks.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
@@ -256,7 +253,6 @@ export default function Home({ setCurrentPage }: HomeProps) {
             {[
               { label: 'BFSI Engine', color: '#7c3aed' },
               { label: 'Digital Retail Engine', color: '#10b981' },
-              { label: 'ESG Framework', color: '#f59e0b' },
               { label: 'Governance Fabric', color: '#06b6d4' },
             ].map((e, i) => (
               <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/8 bg-white/3 text-[10px] font-bold uppercase tracking-widest text-white/40">
@@ -283,7 +279,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
               <span className="italic font-serif text-brand-blue">Every Enterprise Domain.</span>
             </h2>
             <p className="text-lg text-white/35 max-w-2xl mx-auto font-medium leading-relaxed">
-              Our Agentic AI sits above and between your enterprise platforms — acting as the intelligent glue across BFSI, Retail, and ESG systems.
+              We build solutions using agentic AI methods: autonomous agents, policy-gated execution, and governed integrations — so the same platform stack meets enterprise standards from privacy and security through compliance and disclosure obligations.
             </p>
           </div>
           <EcosystemMap setCurrentPage={setCurrentPage} />
@@ -301,9 +297,9 @@ export default function Home({ setCurrentPage }: HomeProps) {
         <div className="max-content">
           <div className="text-center mb-20">
             <div className="section-label-light">■ Technological Capabilities</div>
-            <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-6">Four Engines. One Unified Intelligence.</h2>
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-6">Four capability modules. One agentic delivery model.</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto font-medium">
-              Each capability module is powered by the same agentic DNA — governed, secure, and deployable in weeks.
+              Every module is implemented with the same agentic AI playbook — multi-agent workflows, governed runtimes, and enterprise-grade controls so privacy, compliance, and reporting expectations stay consistent.
             </p>
           </div>
 
@@ -312,7 +308,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
               { icon: <Shield className="text-brand-blue" />, title: 'Autonomous Compliance', body: 'Deploy compliance agents that monitor, classify, and report regulatory signals — without human latency in the loop.', accent: 'border-t-brand-violet' },
               { icon: <Building2 className="text-purple-600" />, title: 'Predictive Risk', body: 'ML-driven risk scoring with real-time regulatory signal ingestion across BFSI portfolios and cross-border entities.', accent: '' },
               { icon: <ShoppingBag className="text-emerald-600" />, title: 'Retail Orchestration', body: 'Autonomous agents optimize supply chain resilience and demand forecasting, governed by enterprise-grade data frameworks.', accent: '' },
-              { icon: <Leaf className="text-amber-500" />, title: 'ESG Intelligence', body: 'Data-driven sustainability monitoring with automated BRSR, GRI, and TCFD reporting pipelines — continuously audited.', accent: '' },
+              { icon: <Layers className="text-amber-500" />, title: 'Agentic platform delivery', body: 'Design and ship technology platforms with agent-native integration layers, API and event contracts, and rollout patterns built for regulated environments.', accent: '' },
             ].map((cap, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }} whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0,0,0,0.12)' }}
@@ -341,13 +337,13 @@ export default function Home({ setCurrentPage }: HomeProps) {
             <div className="section-label-dark">■ The Intelligence Imperative</div>
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-5">The signals are clear. The window is now.</h2>
             <p className="text-base text-white/35 max-w-xl mx-auto font-medium leading-relaxed">
-              Four converging forces are reshaping how enterprises must think about data, intelligence, and governance.
+              Four converging forces are reshaping how enterprises must build software: agentic methods, tighter regulation, fragmented data, and rising governance debt.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { icon: <AlertCircle size={20} />, color: '#7c3aed', label: 'Regulatory Acceleration', stat: '40+', statSub: 'new BFSI regulations since 2022', body: 'SEBI, RBI, and Basel III convergence is outpacing legacy compliance infrastructure — autonomous agents are the only scalable answer.' },
-              { icon: <Globe size={20} />, color: '#f59e0b', label: 'ESG Mandates Go Mandatory', stat: '1,000+', statSub: 'listed companies under BRSR', body: 'Mandatory ESG reporting is no longer optional. Enterprises without data-agent pipelines are exposed to material reporting risk.' },
+              { icon: <Cpu size={20} />, color: '#f59e0b', label: 'Agentic engineering at scale', stat: 'Weeks', statSub: 'not quarters, to governed pilots', body: 'Enterprises are standardizing on agentic AI for platform delivery — with privacy, compliance, and audit requirements enforced in the runtime, not bolted on after go-live.' },
               { icon: <TrendingUp size={20} />, color: '#10b981', label: 'Digital Retail Complexity', stat: '65%', statSub: 'of retailers cite data fragmentation', body: 'Digital retail platforms operate across fragmented data estates. Autonomous orchestration is the only path to supply chain resilience.' },
               { icon: <BarChart3 size={20} />, color: '#06b6d4', label: 'Governance Debt Rising', stat: '35%', statSub: 'of analyst time lost to access delays', body: 'Manual governance is a structural bottleneck. Every day without agentic intelligence is a day of compounding operational debt.' },
             ].map((force, i) => (
@@ -379,7 +375,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
                 Our Intelligence Core deploys across your existing infrastructure.
               </h2>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed font-medium">
-                Zero raw data migration. Full governance chain from day one. Every vertical suite shares the same high-security, agentic DNA — consistent across BFSI, Retail, and ESG deployments.
+                Zero raw data migration. Full governance chain from day one. The same agentic delivery model and architecture specification apply across BFSI and retail stacks — with privacy, compliance, security, and reporting standards engineered in from the first sprint.
               </p>
               <div className="space-y-4 mb-10">
                 {['Zero raw data migration — governance at the metadata layer', 'Policy-enforcement-first architecture across all engines', 'Agent-native runtime deployable in weeks, not quarters', 'Compliance-by-design: not an add-on, but the foundation'].map((pt, i) => (
@@ -439,7 +435,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { tag: 'AI & Governance', color: '#3b82f6', title: 'The Rise of Agentic AI in Enterprise Governance', excerpt: 'Why the RPA era is over and autonomous agents are becoming the new compliance infrastructure for regulated enterprises.', read: '8 min', img: '/images/blog_ai_governance.png' },
-              { tag: 'ESG', color: '#f59e0b', title: 'ESG Data: From Compliance Burden to Competitive Edge', excerpt: 'How data-agent pipelines are transforming mandatory ESG reporting from a cost centre into a strategic intelligence asset.', read: '6 min', img: '/images/blog_esg_data.png' },
+              { tag: 'Architecture', color: '#7c3aed', title: 'Agentic platforms and the enterprise standard', excerpt: 'Why governed agent runtimes, metadata-first design, and a single architecture brief are how teams ship technology platforms without trading off privacy or compliance.', read: '6 min', img: '/images/architecture_stack.png' },
               { tag: 'Digital Retail', color: '#10b981', title: 'Why Digital Retail Platforms Need an Intelligence Layer', excerpt: 'Supply chain fragmentation, demand volatility, and personalisation at scale — autonomous orchestration is the only answer.', read: '7 min', img: '/images/blog_digital_retail.png' },
             ].map((post, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -492,7 +488,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
                 <span className="italic font-serif text-brand-blue">into your enterprise stack?</span>
               </h2>
               <p className="text-white/40 mb-10 max-w-xl mx-auto font-medium text-base leading-relaxed">
-                Our team works with enterprises to map agentic intelligence across BFSI, Digital Retail, and ESG operations — and deploy in weeks.
+                Our team maps agentic AI delivery to your stack — BFSI, digital retail, and cross-cutting governance — so you ship governed platforms in weeks with one consistent enterprise standard.
               </p>
               <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => setCurrentPage('contact')} className="btn-primary">
                 Connect with Our Team

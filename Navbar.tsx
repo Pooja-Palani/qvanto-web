@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Cpu, Shield, Building2, ShoppingBag, Leaf, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Cpu, Shield, Building2, ShoppingBag, Layers, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
@@ -37,9 +37,9 @@ const capabilitiesMenu = [
     page: 'capabilities',
   },
   {
-    icon: <Leaf size={16} />,
-    label: 'ESG Framework',
-    sub: 'Sustainability & Regulatory Reporting',
+    icon: <Layers size={16} />,
+    label: 'Agentic platform delivery',
+    sub: 'Governed integration & rollout',
     color: '#f59e0b',
     page: 'capabilities',
   },
@@ -96,7 +96,10 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <img src="/Logo.png" alt="Company Logo" className="h-16 md:h-20 w-auto object-contain transform scale-[2.2] origin-left -ml-4" />
+          <img src="/torro_png_logo.png" alt="Torro Logo" className="h-16 md:h-20 w-auto object-contain" />
+          <span className="ml-1 text-[24px] sm:text-[28px] font-extrabold tracking-[0.28em] text-white leading-none mt-1">
+            TORRO
+          </span>
         </motion.div>
 
         {/* Desktop Nav */}

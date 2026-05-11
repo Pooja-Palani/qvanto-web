@@ -7,7 +7,7 @@ interface ArchitectureProps { setCurrentPage: (page: string) => void; }
 const layers = [
   { label: 'Data Ingestion Layer', color: '#3b82f6', desc: 'Multi-cloud connectors, on-prem adapters, REST/event APIs, and legacy system bridges — with zero raw data movement.', specs: ['AWS S3, Azure Blob, GCP Storage', 'Snowflake, Databricks, dbt native', 'On-prem: Oracle, SAP, MSSQL', 'Streaming: Kafka, Kinesis'] },
   { label: 'Agent Runtime', color: '#7c3aed', desc: 'The autonomous execution engine. LLM-agnostic multi-agent orchestration with policy gating at every inference step.', specs: ['Multi-agent task orchestration', 'LLM-agnostic model layer', 'Real-time policy enforcement', 'Feedback loop learning'] },
-  { label: 'Vertical Engines', color: '#10b981', desc: 'Domain-specific intelligence modules — BFSI, Commerce, and ESG — each with pre-built regulatory and operational agents.', specs: ['BFSI: SEBI, RBI, Basel III agents', 'Commerce: Supply chain + demand', 'ESG: BRSR, GRI, TCFD pipelines', 'Shared agent library across suites'] },
+  { label: 'Vertical Engines', color: '#10b981', desc: 'Domain-specific intelligence for BFSI and digital commerce — built with the same agentic methods we use to ship governed technology platforms end-to-end.', specs: ['BFSI: SEBI, RBI, Basel III agents', 'Commerce: Supply chain + demand', 'Extensible disclosure & reporting agents', 'Shared agent library across suites'] },
   { label: 'Governance Fabric', color: '#06b6d4', desc: 'The cross-cutting control plane. Data lineage, access control, privacy automation, and audit — applied uniformly across all layers.', specs: ['GDPR, HIPAA, CCPA, DPDP automated', 'Full data lineage graph', 'Role-based access + policy controls', 'Immutable audit trail'] },
   { label: 'Output & Integration', color: '#f59e0b', desc: 'Governed dashboards, API endpoints, webhook streams, and regulatory reports — all audit-stamped and lineage-traced.', specs: ['REST API + webhook delivery', 'Power BI / Tableau connectors', 'Regulatory report generators', 'SIEM and SOC integration'] },
 ];
@@ -34,7 +34,7 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
               <span className="italic font-serif text-brand-blue">Engineering Specification.</span>
             </h1>
             <p className="text-xl text-white/40 max-w-3xl mx-auto font-medium leading-relaxed mb-12">
-              Every platform we deploy shares the same high-security, agentic DNA. This page documents the standard — consistent across BFSI, Digital Retail, and ESG operations.
+              We develop solutions using agentic AI methods: the same architecture delivers privacy controls, regulatory compliance, security, auditability, and reporting aligned with enterprise expectations — including sustainability and disclosure programs where required.
             </p>
           </motion.div>
 
@@ -113,7 +113,7 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
           <div className="text-center mb-16">
             <div className="section-label-light">■ Governance Standard</div>
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-4">Consistent Across Every Vertical Suite</h2>
-            <p className="text-gray-400 max-w-xl mx-auto font-medium">The same data governance, security, and ESG compliance standard applies across BFSI, Commerce, and ESG deployments — without exception.</p>
+            <p className="text-gray-400 max-w-xl mx-auto font-medium">One governed stack: the same data governance, security, and compliance posture applies across every domain module — privacy through to regulatory and disclosure obligations.</p>
           </div>
           <div className="max-w-4xl mx-auto overflow-x-auto rounded-3xl border border-gray-100 shadow-xl">
             <table className="w-full text-left border-collapse min-w-[700px]">
@@ -122,7 +122,7 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
                   <th className="p-5 text-xs font-bold uppercase tracking-widest text-gray-400">Governance Dimension</th>
                   <th className="p-5 text-xs font-bold uppercase tracking-widest text-brand-blue text-center">BFSI Engine</th>
                   <th className="p-5 text-xs font-bold uppercase tracking-widest text-emerald-600 text-center">Commerce Engine</th>
-                  <th className="p-5 text-xs font-bold uppercase tracking-widest text-amber-500 text-center">ESG Framework</th>
+                  <th className="p-5 text-xs font-bold uppercase tracking-widest text-amber-500 text-center">Reporting & standards</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -134,7 +134,7 @@ export default function Architecture({ setCurrentPage }: ArchitectureProps) {
                   { dim: 'Role-Based Access Control', bfsi: '✅', commerce: '✅', esg: '✅' },
                   { dim: 'GDPR / DPDP Compliance', bfsi: '✅', commerce: '✅', esg: '✅' },
                   { dim: 'SEBI / RBI RegTech', bfsi: '✅ Core', commerce: '—', esg: 'Partial' },
-                  { dim: 'ESG Reporting Pipelines', bfsi: 'Partial', commerce: 'Partial', esg: '✅ Core' },
+                  { dim: 'Disclosure & sustainability reporting', bfsi: '✅', commerce: '✅', esg: '✅' },
                 ].map((row, i) => (
                   <tr key={i} className="hover:bg-gray-50/60 transition-colors">
                     <td className="p-5 text-sm font-bold text-gray-600">{row.dim}</td>

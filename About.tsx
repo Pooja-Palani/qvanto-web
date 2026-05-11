@@ -175,11 +175,11 @@ export default function About({ setCurrentPage }: AboutProps) {
 
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
             {[
-              { icon: <Building2 />, title: 'Financial Services', body: 'Experience across leading global banks with deep compliance and regulatory exposure.' },
+              { icon: <Cpu />, title: 'AI & Analytics', body: 'AI model governance, data visualization, Big Data processing, and Generative AI.' },
               { icon: <Code2 />, title: 'Technology Development', body: 'Software engineering skills, emerging technology understanding, and hybrid data platform implementation.' },
               { icon: <ShieldCheck />, title: 'Data Governance', body: 'Familiarity with privacy laws, governance frameworks, and stakeholder collaboration.' },
               { icon: <Briefcase />, title: 'Digital Business', body: 'Online customer acquisition, lifecycle management, and digital product launches.' },
-              { icon: <Cpu />, title: 'AI & Analytics', body: 'AI model governance, data visualization, Big Data processing, and Generative AI.' },
+              { icon: <Building2 />, title: 'Financial Services', body: 'Experience across leading global banks with deep compliance and regulatory exposure.' },
             ].map((card, i) => (
               <motion.div 
                 key={i}
@@ -218,7 +218,7 @@ export default function About({ setCurrentPage }: AboutProps) {
             {[
               { name: 'Pooja Palani', role: 'Founder' },
               { name: 'Subashini Palani', role: 'Co-Founder' },
-              { name: 'Pradeep Ravichandran', role: 'CTO' },
+              { name: 'Pradeep R', role: 'CTO' },
             ].map((founder, i) => (
               <motion.div 
                 key={i}
