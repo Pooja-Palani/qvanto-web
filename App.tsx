@@ -5,6 +5,7 @@ import Home from './Home';
 import Capabilities from './Capabilities';
 import Architecture from './Architecture';
 import Insights from './Insights';
+import BlogArticle from './BlogArticle';
 import About from './About';
 import Contact from './Contact';
 import Admin from './Admin';
@@ -30,6 +31,10 @@ export default function App() {
       case 'insights':
       case 'developers':
         return <Insights setCurrentPage={setCurrentPage} />;
+      case 'blog-ai-governance':
+      case 'blog-esg-data':
+      case 'blog-digital-retail':
+        return <BlogArticle slug={currentPage} setCurrentPage={setCurrentPage} />;
       case 'about':
         return <About setCurrentPage={setCurrentPage} />;
       case 'contact':

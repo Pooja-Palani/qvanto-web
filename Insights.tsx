@@ -1,31 +1,23 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Clock, ArrowRight, Tag } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
+import { blogSummariesForInsights } from './blogArticlesData';
 
 interface InsightsProps { setCurrentPage: (page: string) => void; }
 
-const articles = [
-  {
-    tag: 'AI & Governance', color: '#3b82f6',
-    title: 'The Rise of Agentic AI in Enterprise Governance',
-    excerpt: 'Why the RPA era is ending and autonomous agents are becoming the foundational compliance infrastructure for regulated industries. We explore the architectural shift from rule-based automation to self-reasoning agent networks that operate within policy boundaries.',
-    read: '8 min', featured: true,
-    img: '/images/blog_ai_governance.png',
-  },
-  {
-    tag: 'ESG', color: '#f59e0b',
-    title: 'ESG Data: From Compliance Burden to Competitive Edge',
-    excerpt: 'Mandatory BRSR, GRI, and TCFD reporting are no longer optional. Leading enterprises are deploying data-agent pipelines to transform ESG reporting from a cost centre into a real-time strategic intelligence asset that informs capital allocation.',
-    read: '6 min', featured: true,
-    img: '/images/blog_esg_data.png',
-  },
-  {
-    tag: 'Digital Retail', color: '#10b981',
-    title: 'Why Digital Retail Platforms Need an Intelligence Layer',
-    excerpt: 'Supply chain fragmentation, demand volatility, and personalisation at scale demand more than traditional orchestration. Autonomous agents that govern data across digital retail platforms are the only path to resilient, adaptive operations.',
-    read: '7 min', featured: true,
-    img: '/images/blog_digital_retail.png',
-  },
+type Article = {
+  tag: string;
+  color: string;
+  title: string;
+  excerpt: string;
+  read: string;
+  featured: boolean;
+  img: string;
+  slug?: string;
+};
+
+const articles: Article[] = [
+  ...blogSummariesForInsights(),
   {
     tag: 'BFSI', color: '#7c3aed',
     title: 'How BFSI is Reinventing Compliance with Autonomous Agents',
@@ -97,9 +89,10 @@ export default function Insights({ setCurrentPage }: InsightsProps) {
           <div className="max-content">
             <div className="grid md:grid-cols-3 gap-6">
               {featured.map((post, i) => (
-                <motion.div key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                <motion.div key={post.slug ?? post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                   transition={{ delay: i * 0.09 }} whileHover={{ y: -6 }}
-                  className="group cursor-pointer rounded-2xl overflow-hidden border border-white/8 bg-white/3 backdrop-blur-sm transition-all hover:border-white/15 hover:bg-white/5">
+                  onClick={() => post.slug && setCurrentPage(post.slug)}
+                  className={`group rounded-2xl overflow-hidden border border-white/8 bg-white/3 backdrop-blur-sm transition-all hover:border-white/15 hover:bg-white/5 ${post.slug ? 'cursor-pointer' : ''}`}>
                   <div className="relative h-44 overflow-hidden">
                     <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-[#0a0f1c]/40 to-transparent" />

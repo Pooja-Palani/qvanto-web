@@ -96,7 +96,7 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <img src="/Logo.png" alt="Qvanto AI" className="h-[5.5rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[5.75rem] md:h-28 lg:h-32" />
+          <img src="/Logo.png" alt="Qvanto AI" className="h-[6rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[6.25rem] md:h-30 lg:h-36" />
         </motion.div>
 
         {/* Desktop Nav */}
@@ -205,7 +205,11 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
             <NavLink
               key={link.id}
               label={link.name}
-              active={currentPage === link.id}
+              active={
+                link.id === 'insights'
+                  ? currentPage === 'insights' || currentPage.startsWith('blog-')
+                  : currentPage === link.id
+              }
               onClick={() => navigate(link.id)}
               delay={(idx + 2) * 0.05}
             />
@@ -247,21 +251,27 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
             className="lg:hidden absolute top-full left-0 right-0 bg-brand-dark/97 backdrop-blur-2xl border-b border-white/8 overflow-hidden"
           >
             <div className="p-6 flex flex-col gap-1">
-              {[{ name: 'Ecosystem', id: 'home' }, { name: 'Capabilities', id: 'capabilities' }, { name: 'Architecture', id: 'architecture' }, { name: 'Insights', id: 'insights' }, { name: 'About', id: 'about' }, { name: 'Contact', id: 'contact' }].map((link, idx) => (
+              {[{ name: 'Ecosystem', id: 'home' }, { name: 'Capabilities', id: 'capabilities' }, { name: 'Architecture', id: 'architecture' }, { name: 'Insights', id: 'insights' }, { name: 'About', id: 'about' }, { name: 'Contact', id: 'contact' }].map((link, idx) => {
+                const mobileActive =
+                  link.id === 'insights'
+                    ? currentPage === 'insights' || currentPage.startsWith('blog-')
+                    : currentPage === link.id;
+                return (
                 <motion.button
                   key={link.id}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   onClick={() => navigate(link.id)}
-                  className={`text-left py-3 px-4 rounded-xl font-bold text-sm uppercase tracking-widest transition-all ${currentPage === link.id
+                  className={`text-left py-3 px-4 rounded-xl font-bold text-sm uppercase tracking-widest transition-all ${mobileActive
                       ? 'text-white bg-white/5'
                       : 'text-white/50 hover:text-white hover:bg-white/3'
                     }`}
                 >
                   {link.name}
                 </motion.button>
-              ))}
+              );
+              })}
               <div className="mt-4 pt-4 border-t border-white/8">
                 <button
                   onClick={() => navigate('contact')}
