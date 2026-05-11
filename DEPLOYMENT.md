@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:5173 (default). If another app uses that port, run `PORT=3001 npm run dev`. **Port 3000** is often used by other local projects (e.g. a different platform login); this site defaults to **5173** to avoid that clash.
 
 ## Build & Preview
 

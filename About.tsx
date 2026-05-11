@@ -216,7 +216,7 @@ export default function About({ setCurrentPage }: AboutProps) {
 
           <div className="grid md:grid-cols-3 gap-12 mx-auto">
             {[
-              { name: 'Pooja Palani', role: 'Founder' },
+              { name: 'Pooja Palani', role: 'Co-Founder' },
               { name: 'Subashini Palani', role: 'Co-Founder' },
               { name: 'Pradeep R', role: 'CTO' },
             ].map((founder, i) => (

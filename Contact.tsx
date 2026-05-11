@@ -87,9 +87,9 @@ export default function Contact() {
       {/* Contact Details & Form Section */}
       <section className="py-32 relative">
         <div className="max-content">
-          <div className="grid lg:grid-cols-2 gap-24">
-            {/* Contact Info */}
-            <div>
+          <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
+            {/* Contact Info — narrower column so the form reads wider */}
+            <div className="lg:col-span-4">
               <div className="inline-block px-4 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/60 mb-12">
                 ■ Contact Details
               </div>
@@ -135,8 +135,8 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="glass-card p-12 relative overflow-hidden min-h-150 flex flex-col">
+            {/* Contact Form — wider column */}
+            <div className="glass-card relative flex min-h-[36rem] flex-col overflow-hidden p-8 sm:p-12 lg:col-span-8">
               <div className="relative z-10 flex-1 flex flex-col">
                 <AnimatePresence mode="wait">
                   {formStatus === 'sent' ? (

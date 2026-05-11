@@ -39,16 +39,19 @@ export default function Footer({ setCurrentPage }: FooterProps) {
         <div className="grid md:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5 cursor-pointer" onClick={() => setCurrentPage('home')}>
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-brand-blue font-black -rotate-12">Q</span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-[15px] font-black tracking-tight uppercase">Qvanto AI</span>
-                <span className="text-[8px] font-bold tracking-[0.18em] text-white/25 uppercase">Ecosystem</span>
-              </div>
-            </div>
-            <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-xs font-medium">
+            <button
+              type="button"
+              onClick={() => setCurrentPage('home')}
+              className="mb-5 block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/60 rounded-lg"
+            >
+              <img
+                src="/Logo.png"
+                alt="Qvanto AI"
+                className="h-18 w-auto max-w-[min(100%,380px)] object-contain object-left sm:h-22 md:h-[5.5rem] lg:h-25"
+              />
+              <span className="mt-2 block text-[8px] font-bold tracking-[0.18em] text-white/25 uppercase">Ecosystem</span>
+            </button>
+            <p className="text-white/35 text-sm leading-relaxed mb-6 max-w-md font-medium">
               We engineer the Agentic Intelligence and Governance layers that power the world's most data-critical enterprises.
             </p>
             <button onClick={() => setCurrentPage('contact')}
@@ -77,16 +80,34 @@ export default function Footer({ setCurrentPage }: FooterProps) {
 
         {/* Contact strip */}
         <div className="py-8 border-t border-white/5 border-b border-white/5 mb-8">
-          <div className="flex flex-wrap gap-6 text-sm text-white/40 font-medium">
+          <div className="flex flex-wrap gap-6 text-sm font-medium">
             {[
-              { icon: MailIcon, text: 'qvanto.ai.ltd@gmail.com' },
-              { icon: Phone, text: '+91 9500006530' },
-              { icon: Linkedin, text: 'linkedin.com/company/qvanto-ai' },
+              {
+                icon: MailIcon,
+                text: 'qvanto.ai.ltd@gmail.com',
+                href: 'mailto:qvanto.ai.ltd@gmail.com',
+              },
+              {
+                icon: Phone,
+                text: '+91 9500006530',
+                href: 'tel:+919500006530',
+              },
+              {
+                icon: Linkedin,
+                text: 'linkedin.com/company/qvanto-ai',
+                href: 'https://www.linkedin.com/company/qvanto-ai',
+                external: true,
+              },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 hover:text-white/70 transition-colors cursor-pointer">
-                <item.icon size={13} className="text-brand-blue" />
-                {item.text}
-              </div>
+              <a
+                key={i}
+                href={item.href}
+                {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="flex items-center gap-2 text-white/40 transition-colors hover:text-white/85"
+              >
+                <item.icon size={13} className="shrink-0 text-brand-blue" />
+                <span>{item.text}</span>
+              </a>
             ))}
           </div>
         </div>

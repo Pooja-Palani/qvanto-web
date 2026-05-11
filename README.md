@@ -22,3 +22,4 @@ View your app in AI Studio: https://ai.studio/apps/aad15e2f-91ff-4334-a952-79a0d
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+4. Open **http://localhost:5173** — this project defaults to port **5173** so it does not collide with other apps commonly bound to **3000** (set `PORT=...` if you need a different port).

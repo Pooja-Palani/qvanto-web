@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { Menu, X, ChevronDown, Cpu, Shield, Building2, ShoppingBag, Layers, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -83,8 +83,8 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-brand-dark/85 backdrop-blur-xl py-3 border-b border-white/8'
-          : 'bg-transparent py-5'
+          ? 'border-b border-white/8 bg-brand-dark/80 py-3 backdrop-blur-xl'
+          : 'bg-transparent py-4 backdrop-blur-sm'
         }`}
     >
       <div className="max-content flex items-center justify-between">
@@ -96,20 +96,25 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <img src="/Logo.png" alt="Qvanto AI" className="h-[6rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[6.25rem] md:h-30 lg:h-36" />
+          <img
+            src="/Logo.png"
+            alt="Qvanto AI"
+            className="h-[5.5rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[5.75rem] md:h-28 lg:h-32"
+          />
         </motion.div>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           {/* Ecosystem link */}
           {primaryLinks.slice(0, 1).map((link, idx) => (
-            <NavLink
-              key={link.id}
-              label={link.name}
-              active={currentPage === link.id}
-              onClick={() => navigate(link.id)}
-              delay={idx * 0.05}
-            />
+            <Fragment key={link.id}>
+              <NavLink
+                label={link.name}
+                active={currentPage === link.id}
+                onClick={() => navigate(link.id)}
+                delay={idx * 0.05}
+              />
+            </Fragment>
           ))}
 
           {/* Capabilities Dropdown */}
@@ -202,17 +207,18 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
 
           {/* Rest of primary links */}
           {primaryLinks.slice(1).map((link, idx) => (
-            <NavLink
-              key={link.id}
-              label={link.name}
-              active={
-                link.id === 'insights'
-                  ? currentPage === 'insights' || currentPage.startsWith('blog-')
-                  : currentPage === link.id
-              }
-              onClick={() => navigate(link.id)}
-              delay={(idx + 2) * 0.05}
-            />
+            <Fragment key={link.id}>
+              <NavLink
+                label={link.name}
+                active={
+                  link.id === 'insights'
+                    ? currentPage === 'insights' || currentPage.startsWith('blog-')
+                    : currentPage === link.id
+                }
+                onClick={() => navigate(link.id)}
+                delay={(idx + 2) * 0.05}
+              />
+            </Fragment>
           ))}
 
           {/* CTA */}
@@ -301,6 +307,7 @@ function NavLink({
 }) {
   return (
     <motion.button
+      type="button"
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay }}

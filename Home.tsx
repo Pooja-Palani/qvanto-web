@@ -435,16 +435,16 @@ export default function Home({ setCurrentPage }: HomeProps) {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { tag: 'AI & Governance', color: '#3b82f6', title: 'The Rise of Agentic AI in Enterprise Governance', excerpt: 'Why the RPA era is over and autonomous agents are becoming the new compliance infrastructure for regulated enterprises.', read: '8 min', img: '/images/blog_ai_governance.png', page: 'blog-ai-governance' as const },
-              { tag: 'Architecture', color: '#7c3aed', title: 'Agentic platforms and the enterprise standard', excerpt: 'Why governed agent runtimes, metadata-first design, and a single architecture brief are how teams ship technology platforms without trading off privacy or compliance.', read: '6 min', img: '/images/architecture_stack.png', page: 'insights' as const },
-              { tag: 'Digital Retail', color: '#10b981', title: 'Why Digital Retail Platforms Need an Intelligence Layer', excerpt: 'Supply chain fragmentation, demand volatility, and personalisation at scale — autonomous orchestration is the only answer.', read: '7 min', img: '/images/blog_digital_retail.png', page: 'blog-digital-retail' as const },
+              { tag: 'Architecture', color: '#2563eb', title: 'Agentic platforms and the enterprise standard', excerpt: 'Why governed agent runtimes, metadata-first design, and a single architecture brief are how teams ship technology platforms without trading off privacy or compliance.', read: '6 min', img: '/images/architecture_stack.png', page: 'insights' as const },
+              { tag: 'Digital Retail', color: '#1d4ed8', title: 'Why Digital Retail Platforms Need an Intelligence Layer', excerpt: 'Supply chain fragmentation, demand volatility, and personalisation at scale — autonomous orchestration is the only answer.', read: '7 min', img: '/images/blog_digital_retail.png', page: 'blog-digital-retail' as const },
             ].map((post, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.09 }} whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
                 onClick={() => setCurrentPage(post.page)}
-                className="group cursor-pointer rounded-2xl border border-gray-100 bg-gray-50 overflow-hidden transition-all hover:border-gray-200">
+                className="group cursor-pointer overflow-hidden rounded-2xl border border-blue-100/90 bg-gradient-to-b from-white to-blue-50/70 transition-all hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/10">
                 <div className="relative h-40 overflow-hidden">
                   <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-50/90 via-transparent to-transparent" />
                 </div>
                 <div className="p-7">
                   <div className="flex items-center gap-2 mb-4">

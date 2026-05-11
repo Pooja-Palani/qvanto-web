@@ -3,6 +3,9 @@ import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Clock } from 'lucide-react';
 import { BLOG_BY_SLUG, getSuggestedBlogs, type BlogArticleData } from './blogArticlesData';
 
+/** Readable column — blog content width */
+const ARTICLE_COL = 'max-w-5xl mx-auto w-full';
+
 interface BlogArticleProps {
   slug: string;
   setCurrentPage: (page: string) => void;
@@ -12,7 +15,8 @@ export default function BlogArticle({ slug, setCurrentPage }: BlogArticleProps) 
   const post: BlogArticleData | undefined = BLOG_BY_SLUG[slug];
   if (!post) {
     return (
-      <div className="bg-brand-dark min-h-screen pt-40 pb-24 text-center text-white/50">
+      <div className="relative min-h-screen pt-36 pb-24 text-center text-white/50">
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-slate-900 to-brand-dark" />
         <p className="mb-6 font-medium">Article not found.</p>
         <button
           type="button"
@@ -28,92 +32,99 @@ export default function BlogArticle({ slug, setCurrentPage }: BlogArticleProps) 
   const suggested = getSuggestedBlogs(slug);
 
   return (
-    <div className="bg-[#05070A] min-h-screen text-white">
-      {/* Top bar */}
-      <div className="border-b border-white/[0.06] bg-[#05070A]/90 backdrop-blur-md">
-        <div className="max-content py-4 flex items-center justify-between gap-4">
+    <div className="relative min-h-screen text-white pb-20">
+      {/* Softer page background + subtle grid (glass-friendly) */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-slate-800/90 via-[#0f172a] to-[#0b1120]" aria-hidden />
+      <div className="pointer-events-none fixed inset-0 -z-10 arch-grid opacity-[0.25]" aria-hidden />
+      <div
+        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_90%_60%_at_50%_0%,rgba(59,130,246,0.14),transparent_55%)]"
+        aria-hidden
+      />
+
+      {/* Space below fixed navbar — must clear nav height so “All insights” receives clicks */}
+      <div className="max-content pt-36 md:pt-44">
+        <div className={ARTICLE_COL}>
           <button
             type="button"
             onClick={() => setCurrentPage('insights')}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/45 hover:text-white transition-colors"
+            className="mb-6 inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md transition-colors hover:border-white/25 hover:bg-white/[0.12] hover:text-white"
           >
-            <ArrowLeft size={14} />
-            Insights
+            <ArrowLeft size={14} className="opacity-80" />
+            All insights
           </button>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-white/25 hidden sm:inline truncate max-w-[50%]">
-            {post.title}
-          </span>
+
+          {/* Hero — same width as article column */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.04] shadow-2xl shadow-black/30 backdrop-blur-sm min-h-[220px] h-[min(42vw,380px)] max-h-[420px]"
+          >
+            <img src={post.img} alt={post.title} className="absolute inset-0 h-full w-full object-cover opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/95 via-[#0f172a]/25 to-[#1e293b]/40" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent" />
+            <div className="relative flex h-full min-h-[220px] flex-col justify-end p-6 sm:p-9">
+              <span
+                className="mb-3 inline-flex w-fit rounded-full border border-white/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest backdrop-blur-md"
+                style={{ backgroundColor: `${post.color}22`, color: post.color }}
+              >
+                {post.tag}
+              </span>
+              <h1 className="text-2xl font-medium leading-[1.15] tracking-tight sm:text-4xl md:text-[2.35rem]">
+                {post.title}
+              </h1>
+              <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-white/55">
+                <Clock size={12} className="opacity-70" />
+                {post.read} read
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Body — glass panel, same width as hero */}
+          <motion.article
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.4 }}
+            className="mt-8 rounded-2xl border border-white/12 bg-white/[0.06] p-8 shadow-xl shadow-black/25 backdrop-blur-xl sm:p-10"
+          >
+            <p className="mb-10 text-lg font-medium leading-relaxed text-white/75">{post.lead}</p>
+
+            {post.sections.map((section) => (
+              <section key={section.heading} className="mb-10 last:mb-0">
+                <h2 className="mb-4 text-xl font-bold tracking-tight text-white">{section.heading}</h2>
+                <div className="space-y-4">
+                  {section.paragraphs.map((p, j) => (
+                    <p key={j} className="text-[15px] font-medium leading-relaxed text-white/60 sm:text-base">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </section>
+            ))}
+
+            <div className="mt-12 border-t border-white/10 pt-10">
+              <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-white/40">Keywords</h2>
+              <div className="flex flex-wrap gap-2">
+                {post.keywords.map((kw) => (
+                  <span
+                    key={kw}
+                    className="rounded-lg border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[12px] font-medium text-white/65 backdrop-blur-sm"
+                  >
+                    {kw}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.article>
         </div>
       </div>
 
-      {/* Hero visual */}
-      <div className="max-content pt-8 pb-10 px-4 sm:px-0">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0C0E14] min-h-[220px] h-[min(42vw,400px)] max-h-[440px]"
-        >
-          <img src={post.img} alt={post.title} className="absolute inset-0 w-full h-full object-cover opacity-95" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05070A] via-transparent to-[#05070A]/30" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-            <span
-              className="inline-block text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4"
-              style={{ backgroundColor: `${post.color}28`, color: post.color }}
-            >
-              {post.tag}
-            </span>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.15] max-w-4xl">
-              {post.title}
-            </h1>
-            <p className="mt-4 flex items-center gap-2 text-[11px] text-white/40 font-medium">
-              <Clock size={12} className="opacity-70" />
-              {post.read} read
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Article body */}
-      <article className="max-content max-w-[680px] pb-16 px-4 sm:px-6">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.4 }}>
-          <p className="text-lg text-white/70 font-medium leading-relaxed mb-12">{post.lead}</p>
-
-          {post.sections.map((section, i) => (
-            <section key={section.heading} className="mb-12 last:mb-0">
-              <h2 className="text-xl font-bold text-white mb-5 tracking-tight">{section.heading}</h2>
-              <div className="space-y-4">
-                {section.paragraphs.map((p, j) => (
-                  <p key={j} className="text-[15px] sm:text-base text-white/55 leading-relaxed font-medium">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </section>
-          ))}
-
-          {/* Keywords */}
-          <div className="mt-16 pt-10 border-t border-white/[0.08]">
-            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-white/35 mb-4">Keywords</h2>
-            <div className="flex flex-wrap gap-2">
-              {post.keywords.map((kw) => (
-                <span
-                  key={kw}
-                  className="px-3 py-1.5 rounded-lg text-[12px] font-medium text-white/60 bg-white/[0.04] border border-white/[0.08]"
-                >
-                  {kw}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </article>
-
-      {/* Suggested blogs */}
-      <section className="border-t border-white/[0.06] bg-[#0a0c12] py-16">
+      {/* Suggested — full band, glass cards */}
+      <section className="mt-4 border-t border-white/10 bg-white/[0.03] py-14 backdrop-blur-md">
         <div className="max-content">
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-white/35 mb-8">Suggested blogs</h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
+          <div className="mx-auto w-full max-w-5xl space-y-8">
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Suggested blogs</h2>
+            <div className="grid gap-6 md:grid-cols-2">
             {suggested.map((s, i) => (
               <motion.button
                 key={s.slug}
@@ -123,33 +134,33 @@ export default function BlogArticle({ slug, setCurrentPage }: BlogArticleProps) 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 onClick={() => setCurrentPage(s.slug)}
-                className="text-left rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0C0E14] hover:border-white/[0.14] hover:bg-[#10131c] transition-all group"
+                className="group text-left overflow-hidden rounded-2xl border border-white/12 bg-white/[0.05] shadow-lg shadow-black/20 backdrop-blur-xl transition-all hover:border-white/20 hover:bg-white/[0.08]"
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-36 overflow-hidden">
                   <img
                     src={s.img}
                     alt={s.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0E14] via-[#0C0E14]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent" />
                   <span
-                    className="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full backdrop-blur-md"
-                    style={{ backgroundColor: `${s.color}35`, color: s.color }}
+                    className="absolute left-3 top-3 rounded-full border border-white/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest backdrop-blur-md"
+                    style={{ backgroundColor: `${s.color}30`, color: s.color }}
                   >
                     {s.tag}
                   </span>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-2 text-[10px] text-white/30 font-medium">
+                <div className="p-5">
+                  <div className="mb-2 flex items-center gap-2 text-[10px] font-medium text-white/35">
                     <Clock size={10} />
                     {s.read} read
                   </div>
-                  <h3 className="font-bold text-base text-white group-hover:text-brand-blue transition-colors leading-snug mb-2">
+                  <h3 className="mb-2 text-base font-bold leading-snug text-white transition-colors group-hover:text-brand-blue">
                     {s.title}
                   </h3>
-                  <p className="text-sm text-white/40 leading-relaxed font-medium line-clamp-2">{s.excerpt}</p>
+                  <p className="line-clamp-2 text-sm font-medium leading-relaxed text-white/45">{s.excerpt}</p>
                   <div
-                    className="mt-4 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest opacity-70 group-hover:opacity-100"
+                    className="mt-4 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest opacity-70 transition-opacity group-hover:opacity-100"
                     style={{ color: s.color }}
                   >
                     Read <ArrowRight size={10} />
@@ -157,16 +168,17 @@ export default function BlogArticle({ slug, setCurrentPage }: BlogArticleProps) 
                 </div>
               </motion.button>
             ))}
-          </div>
+            </div>
 
-          <div className="mt-10 text-center md:text-left">
-            <button
-              type="button"
-              onClick={() => setCurrentPage('insights')}
-              className="text-[11px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors inline-flex items-center gap-2"
-            >
-              View all insights <ArrowRight size={12} />
-            </button>
+            <div className="text-center md:text-left">
+              <button
+                type="button"
+                onClick={() => setCurrentPage('insights')}
+                className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white/45 transition-colors hover:text-white"
+              >
+                View all insights <ArrowRight size={12} />
+              </button>
+            </div>
           </div>
         </div>
       </section>

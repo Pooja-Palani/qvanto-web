@@ -70,7 +70,7 @@ export default function Insights({ setCurrentPage }: InsightsProps) {
       </section>
 
       {/* Tag filter */}
-      <section className="py-3 border-y border-white/6 bg-brand-surface/40 backdrop-blur-xl sticky top-[64px] z-40">
+      <section className="py-3 border-y border-white/6 bg-brand-surface/40 backdrop-blur-xl sticky top-44 z-40">
         <div className="max-content">
           <div className="flex items-center gap-2 overflow-x-auto pb-0.5 scrollbar-none">
             {tags.map(t => (
