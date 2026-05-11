@@ -96,7 +96,7 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <img src="/Logo.png" alt="Qvanto AI" className="h-20 w-auto max-w-[min(100%,320px)] object-contain object-left sm:h-[5.25rem] md:h-24 lg:h-28" />
+          <img src="/Logo.png" alt="Qvanto AI" className="h-[5.5rem] w-auto max-w-[min(100%,360px)] object-contain object-left sm:h-[5.75rem] md:h-28 lg:h-32" />
         </motion.div>
 
         {/* Desktop Nav */}
