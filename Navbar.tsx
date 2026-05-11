@@ -96,10 +96,7 @@ export default function Navbar({ setCurrentPage, currentPage }: NavbarProps) {
           className="flex items-center cursor-pointer"
           onClick={() => navigate('home')}
         >
-          <img src="/torro_png_logo.png" alt="Torro Logo" className="h-16 md:h-20 w-auto object-contain" />
-          <span className="ml-1 text-[24px] sm:text-[28px] font-extrabold tracking-[0.28em] text-white leading-none mt-1">
-            TORRO
-          </span>
+          <img src="/Logo.png" alt="Qvanto AI" className="h-12 sm:h-14 md:h-16 w-auto object-contain object-left" />
         </motion.div>
 
         {/* Desktop Nav */}
