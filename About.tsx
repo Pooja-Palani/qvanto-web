@@ -214,11 +214,10 @@ export default function About({ setCurrentPage }: AboutProps) {
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">Meet the Founders</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12 mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 mx-auto max-w-3xl">
             {[
               { name: 'Pooja Palani', role: 'Co-Founder' },
               { name: 'Subashini Palani', role: 'Co-Founder' },
-              { name: 'Pradeep R', role: 'CTO' },
             ].map((founder, i) => (
               <motion.div 
                 key={i}
